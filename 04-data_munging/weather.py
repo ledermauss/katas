@@ -43,7 +43,7 @@ if __name__ == "__main__":
 
 def read_dataframe(lines):
     columns = get_columns(lines[0])
-    for line in lines:
+    for line in lines[1:]:
         columns = assign_content_to_columns(columns, line)
     return DataFrame(columns)
 
