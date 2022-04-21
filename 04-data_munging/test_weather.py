@@ -94,3 +94,11 @@ def test_column_neq():
     col1 =  Column("col", 0, 1, [0])
     col2 =  Column("col", 0, 1, [])
     assert col1 != col2
+
+def test_get_df_names():
+    df = DataFrame([
+        Column("head1", 0, 4, [None, None, None]), 
+        Column("max", 7, 11, [1,2,3]), 
+        Column("min", 8, 12, [6,5,4])
+        ])
+    assert df.column_names == ["head1", "max", "min"]

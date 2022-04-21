@@ -54,6 +54,12 @@ class DataFrame:
         for c in self.columns:
             if c.name == column:
                 return c.min()
+
+    @property
+    def column_names(self):
+        return [c.name for c in self.columns]
+
+
         
 
 if __name__ == "__main__":
