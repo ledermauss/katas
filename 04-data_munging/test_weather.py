@@ -80,6 +80,8 @@ def test_compute_temperature_spread():
         Column("max", 7, 11, [1,2,3]), 
         Column("min", 8, 12, [6,5,4])
         ])
+    assert df.max("max") == 3
+    assert df.min("min") == 4
 
 
 def test_column_eq():

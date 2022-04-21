@@ -19,10 +19,22 @@ class Column:
         return self.name == other.name and \
     self.start == other.start and self.end == other.end and rows_equal
 
+    def get_name(self):
+        return self.name
+
+    def max(self):
+        return max(self.rows)
+
+    def min(self):
+        return min(self.rows)
+
+
+
+
 
 
 class DataFrame:
-    def __init__(self, columns):
+    def __init__(self, columns: list):
         self.columns = columns
 
     def __eq__(self, other):
@@ -32,6 +44,16 @@ class DataFrame:
         for i in range(len(self.columns)):
             columns_equal = columns_equal and (self.columns[i] == other.columns[i])
         return columns_equal
+    
+    def max(self, column):
+        for c in self.columns:
+            if c.name == column:
+                return c.max()
+
+    def min(self, column):
+        for c in self.columns:
+            if c.name == column:
+                return c.min()
         
 
 if __name__ == "__main__":
