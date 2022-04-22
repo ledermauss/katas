@@ -58,6 +58,14 @@ def test_parsing():
     assert parse_content("HH") == "HH"
 
 
+def test_df_get_column():
+    df = DataFrame([
+        Column("head1", 0, 4, [20, 21, 22]), 
+        Column("max", 7, 11, [1,2,3]), 
+        Column("min", 8, 12, [6,5,4])
+        ])
+    assert df.get_column("head1").name == "head1"
+
 def test_content_is_in_column():
     assert content_is_in_column(2, 3, 0, 10) is True
 

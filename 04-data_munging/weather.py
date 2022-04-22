@@ -31,8 +31,6 @@ class Column:
 
 
 
-
-
 class DataFrame:
     def __init__(self, columns: list):
         self.columns = columns
@@ -46,14 +44,15 @@ class DataFrame:
         return columns_equal
     
     def max(self, column):
-        for c in self.columns:
-            if c.name == column:
-                return c.max()
+        return self.get_column(column).max()
 
     def min(self, column):
+        return self.get_column(column).min()
+
+    def get_column(self, name):
         for c in self.columns:
-            if c.name == column:
-                return c.min()
+            if c.name == name:
+                return c
 
     @property
     def column_names(self):
@@ -141,6 +140,6 @@ def parse_content(content):
         return float(content)
 
 
+#def get_temperature_spread(max_column="MxT", min_column="MnT"):
+    
 
-def get_spread(data_frame):
-    return
