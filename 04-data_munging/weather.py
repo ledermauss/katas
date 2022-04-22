@@ -57,7 +57,7 @@ class DataFrame:
     def column_diff(self, column1, column2):
         c1 = self.get_column(column1)
         c2 = self.get_column(column2)
-        return (val2 - val1 for (val2, val1) in zip(c2.rows, c1.rows))
+        return [abs(val2 - val1) for (val2, val1) in zip(c2.rows, c1.rows)]
 
 
     @property
@@ -146,6 +146,10 @@ def parse_content(content):
         return float(content)
 
 
-#def get_temperature_spread(max_column="MxT", min_column="MnT"):
+def get_temperature_spread(dataframe: DataFrame, max_column="MxT", min_column="MnT"):
+    col_diff = dataframe.column_diff(min_column, max_column)
+    max_diff = max(col_diff)
+    return col_diff.index(max_diff)
+
     
 

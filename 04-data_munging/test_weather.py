@@ -118,3 +118,12 @@ def test_get_df_names():
         Column("min", 8, 12, [6,5,4])
         ])
     assert df.column_names == ["head1", "max", "min"]
+
+def test_temperature_spread():
+    df = DataFrame([
+        Column("head1", 0, 4, [None, None, None]), 
+        Column("max", 7, 11, [1,2,3]), 
+        Column("min", 8, 12, [6,5,4])
+        ])
+    assert get_temperature_spread(df, "max", "min") == 0
+
