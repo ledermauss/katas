@@ -54,6 +54,12 @@ class DataFrame:
             if c.name == name:
                 return c
 
+    def column_diff(self, column1, column2):
+        c1 = self.get_column(column1)
+        c2 = self.get_column(column2)
+        return (val2 - val1 for (val2, val1) in zip(c2.rows, c1.rows))
+
+
     @property
     def column_names(self):
         return [c.name for c in self.columns]

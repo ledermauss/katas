@@ -82,7 +82,7 @@ def test_content_is_not_in_right_column():
     assert content_is_in_column(2, 3, 5, 10) is False
 
 
-def test_compute_temperature_spread():
+def test_compute_temperature_max_min():
     df = DataFrame([
         Column("head1", 0, 4, [None, None, None]), 
         Column("max", 7, 11, [1,2,3]), 
@@ -90,6 +90,14 @@ def test_compute_temperature_spread():
         ])
     assert df.max("max") == 3
     assert df.min("min") == 4
+
+def test_column_diff():
+    df = DataFrame([
+        Column("head1", 0, 4, [20, 21, 22]), 
+        Column("min", 7, 11, [1,2,3]), 
+        Column("max", 8, 12, [6,5,4])
+        ])
+    assert list(df.column_diff("min", "max")) == [5, 3, 1]
 
 
 def test_column_eq():
