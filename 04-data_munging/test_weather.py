@@ -125,9 +125,11 @@ def test_get_df_names():
 
 def test_temperature_spread():
     df = DataFrame([
-        Column("head1", 0, 4, [None, None, None]), 
+        Column("head1", 1, 4, ["Day", None, None]), 
         Column("max", 7, 11, [1,2,3]), 
         Column("min", 8, 12, [6,5,4])
         ])
-    assert get_temperature_spread(df, "max", "min") == 0
+    # TODO: get the value on the first column, not the index
+    assert get_temperature_spread(df, "max", "min", "head1") ==  "Day"
+
 

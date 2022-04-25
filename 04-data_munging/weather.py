@@ -68,15 +68,6 @@ class DataFrame:
         return [c.name for c in self.columns]
 
 
-        
-
-if __name__ == "__main__":
-    data_frame = None
-    with open("weather.dat", "r") as dat:
-        data = dat.readlines()
-        data_frame = read_dataframe(data)
-
-
 def read_dataframe(lines):
     columns = get_columns(lines[0])
     for line in lines[1:]:
@@ -149,10 +140,25 @@ def parse_content(content):
         return float(content)
 
 
-def get_temperature_spread(dataframe: DataFrame, max_column="MxT", min_column="MnT"):
+def get_temperature_spread(dataframe: DataFrame, max_column="MxT", min_column="MnT", row_names="Dy"):
     col_diff = dataframe.column_diff(min_column, max_column)
     max_diff = max(col_diff)
+    max_index = col_diff.index(max_diff)
+    return dataframe.get_column(row_names).get_element(max_index)
     return col_diff.index(max_diff)
 
+
+
     
+
+
+        
+
+if __name__ == "__main__":
+    data_frame = None
+    with open("weather.dat", "r") as dat:
+        data = dat.readlines()
+        data_frame = read_dataframe(data)
+        max_spread = get_temperature_spread(data_frame, "MxT", "MnT", "Dy")
+        print(f"Colum with max spread is {max_spread}")
 
