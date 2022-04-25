@@ -66,6 +66,10 @@ def test_df_get_column():
         ])
     assert df.get_column("head1").name == "head1"
 
+def test_column_get_element(): 
+    c = Column("head1", 0, 4, [20, 21, 22])
+    assert c.get_element(0) == 20
+
 def test_content_is_in_column():
     assert content_is_in_column(2, 3, 0, 10) is True
 

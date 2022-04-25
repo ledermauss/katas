@@ -22,6 +22,9 @@ class Column:
     def get_name(self):
         return self.name
 
+    def get_element(self, idx):
+        return self.rows[idx]
+
     def max(self):
         return max(self.rows)
 
