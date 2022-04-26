@@ -149,9 +149,6 @@ def get_temperature_spread(dataframe: DataFrame, max_column="MxT", min_column="M
 
 
 
-    
-
-
         
 
 if __name__ == "__main__":
