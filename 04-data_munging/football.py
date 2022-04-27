@@ -12,3 +12,5 @@ if __name__ == "__main__":
     with open("football.dat") as dat:
         data = dat.readlines()
         data_frame =  read_dataframe(remove_slashes(data))
+        # next: find the actual difference
+        # possible problems: the first column has no header
